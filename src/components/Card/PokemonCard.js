@@ -64,7 +64,6 @@ const pokemon = {
 };
 
 export const PokemonCard = () => {
-	const esta = true;
 	return (
 		<Paper elevation={3}>
 			<Box
@@ -93,7 +92,7 @@ export const PokemonCard = () => {
 				<List>
 					{pokemon.stats.map((poke, index) => {
 						return (
-							<ListItem>
+							<ListItem key={index}>
 								<ListItemText
 									primary={poke.stat.name}
 									secondary={
@@ -106,17 +105,18 @@ export const PokemonCard = () => {
 													marginTop: ".25rem",
 												}}
 											/>
-											<Box
+
+											<Typography
+												variant="span"
+												component="span"
 												sx={{
 													display: "flex",
 													justifyContent: "flex-end",
 													width: "100%",
 												}}
 											>
-												<Typography variant="span" component="span">
-													{poke.base_stat}/100
-												</Typography>
-											</Box>
+												{poke.base_stat}/100
+											</Typography>
 										</>
 									}
 								/>
@@ -133,11 +133,7 @@ export const PokemonCard = () => {
 					justifyContent: "center",
 				}}
 			>
-				{esta ? (
-					<Button variant="outlined">Remove</Button>
-				) : (
-					<Button variant="contained">Add</Button>
-				)}
+				<Button variant="outlined">Remove</Button>
 			</Box>
 		</Paper>
 	);

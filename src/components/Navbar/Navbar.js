@@ -9,9 +9,9 @@ import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import MenuItem from "@mui/material/MenuItem";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const pages = ["Equipo", "Buscar", "Pokemons"];
-
+const pages = ["equipo", "buscar", "pokemons"];
 export const Navbar = () => {
 	const [anchorElNav, setAnchorElNav] = useState(null);
 
@@ -60,7 +60,12 @@ export const Navbar = () => {
 						>
 							{pages.map((page) => (
 								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Typography textAlign="center">{page}</Typography>
+									<Link
+										to={`/${page}`}
+										style={{ textDecoration: "none", color: "#fff" }}
+									>
+										<Typography textAlign="center">{page}</Typography>
+									</Link>
 								</MenuItem>
 							))}
 						</Menu>
@@ -82,7 +87,12 @@ export const Navbar = () => {
 									fontSize: "1.25rem",
 								}}
 							>
-								{page}
+								<Link
+									to={`/${page}`}
+									style={{ textDecoration: "none", color: "#fff" }}
+								>
+									{page}
+								</Link>
 							</Button>
 						))}
 					</Box>
