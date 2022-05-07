@@ -1,12 +1,15 @@
-import { Avatar, Paper, Typography, Button } from "@mui/material";
-import { Box } from "@mui/system";
-import { PokemonStats } from "./PokemonStats";
-import { Link, useLocation } from "react-router-dom";
+import { Paper } from "@mui/material";
+import { useLocation } from "react-router-dom";
+import { HeaderCard } from "./components/HeaderCard";
+import { BodyCard } from "./components/BodyCard";
+import { FooterCard } from "./components/FooterCard";
+import { useSelector } from "react-redux";
 
 export const PokemonCard = ({ pokemon }) => {
 	const location = useLocation();
+	const pokemon2 = useSelector(state => state.pokemon)
 
-	console.log(location);
+
 	return (
 		<Paper
 			elevation={6}
@@ -18,80 +21,13 @@ export const PokemonCard = ({ pokemon }) => {
 				borderRadius: "1rem",
 			}}
 		>
-			<Box
-				variant="card"
-				sx={{
-					display: "flex",
-					flexDirection: "column",
-					alignItems: "center",
-					justifyContents: "center",
-					paddingTop: "1rem",
-				}}
-			>
-				<Avatar
-					src={
-						pokemon.sprites?.other["official-artwork"].front_default ||
-						`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-							pokemon.url?.split("/")[6]
-						}.png`
-					}
-					sx={{ width: 150, height: 150, margin: "auto" }}
-				/>
-				<Typography variant="h5" component="h1">
-					{"" || pokemon.name}
-				</Typography>
-			</Box>
+			<HeaderCard url={pokemon.url} id={pokemon.id} name={pokemon.name} />
+
 			{location.pathname === "/buscar" ||
 			location.pathname === "/pokemons" ? null : (
-				<Box
-					sx={{
-						height: "auto",
-						width: "100%",
-					}}
-				>
-					<PokemonStats stats={pokemon.stats} />
-				</Box>
+				<BodyCard stats={pokemon.stats} />
 			)}
-			<Box
-				sx={{
-					paddingBottom: "1rem",
-					display: "flex",
-					alignItems: "center",
-					justifyContent: "center",
-					marginTop: "1rem"
-				}}
-			>
-				{location.pathname === "/buscar" ||
-				location.pathname === "/pokemons" ? (
-					<Box
-						sx={{
-							display: "inherit",
-							width: "80%",
-							justifyContent: "space-around",
-						}}
-					>
-						<Button variant="contained">Agregar</Button>
-						<Link
-							to={`/pokemon/${pokemon.name}`}
-							style={{
-								textDecoration: "none",
-							}}
-						>
-							<Button
-								variant="outlined"
-								sx={{
-									padding: "5px 25px",
-								}}
-								color="primary"
-							>
-								Mas...
-							</Button>
-						</Link>
-					</Box>
-				) : (
-					<Button variant="outlined">Remove</Button>
-				)}
-			</Box>
+			<FooterCard name={pokemon.name}/>
 		</Paper>
 	);
 };

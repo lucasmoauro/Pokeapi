@@ -16,17 +16,17 @@ export const PokemonView = () => {
 	}, []); //eslint-disable-line
 
 	return (
-		<Container
-			maxWidth="xl"
-			sx={{
-			}}
-		>
+		<Container maxWidth="xl" sx={{}}>
 			<Grid container>
-					<Grid item xs={4} sx={{
-                        marginX: "auto",
-                    }}>
-						<PokemonCard pokemon={pokemonName} />
-					</Grid>
+				<Grid
+					item
+					xs={4}
+					sx={{
+						marginX: "auto",
+					}}
+				>
+					<PokemonCard pokemon={pokemonName} />
+				</Grid>
 			</Grid>
 		</Container>
 	);

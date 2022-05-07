@@ -1,23 +1,12 @@
 import { Box, Container, Grid, Pagination } from "@mui/material";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getPokemonListAsync } from "../../redux/slices/pokemonListSlice";
+import { useSelector } from "react-redux";
 import { PokemonCard } from "../Card/PokemonCard";
 
 export const Pokemons = () => {
-	const dispatch = useDispatch();
 	const pokemonList = useSelector((state) => state.pokemonList);
 
-	useEffect(() => {
-		dispatch(getPokemonListAsync());
-	}, []); //eslint-disable-line
-
 	return (
-		<Container
-			maxWidth="xl"
-			sx={{
-			}}
-		>
+		<Container maxWidth="xl" sx={{}}>
 			<Grid container spacing={2}>
 				{pokemonList.map((pokemon, index) => {
 					return (
@@ -27,14 +16,16 @@ export const Pokemons = () => {
 					);
 				})}
 			</Grid>
-      <Box sx={{
-        marginY: "2rem",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center"
-      }}>
-        <Pagination count={10} color="primary" />
-      </Box>
+			<Box
+				sx={{
+					marginY: "2rem",
+					display: "flex",
+					alignItems: "center",
+					justifyContent: "center",
+				}}
+			>
+				<Pagination count={10} color="primary" />
+			</Box>
 		</Container>
 	);
 };
