@@ -1,71 +1,23 @@
-import {
-	Avatar,
-	List,
-	Paper,
-	ListItem,
-	ListItemText,
-	LinearProgress,
-	Typography,
-	Button,
-} from "@mui/material";
+import { Avatar, Paper, Typography, Button } from "@mui/material";
 import { Box } from "@mui/system";
-import React from "react";
+import { PokemonStats } from "./PokemonStats";
+import { useLocation } from "react-router-dom";
 
-const pokemon = {
-	name: "bulbasaur",
-	official: {
-		front_default:
-			"https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
-	},
-	stats: [
-		{
-			base_stat: 45,
-			stat: {
-				name: "hp",
-				url: "https://pokeapi.co/api/v2/stat/1/",
-			},
-		},
-		{
-			base_stat: 49,
-			stat: {
-				name: "attack",
-				url: "https://pokeapi.co/api/v2/stat/2/",
-			},
-		},
-		{
-			base_stat: 49,
-			stat: {
-				name: "defense",
-				url: "https://pokeapi.co/api/v2/stat/3/",
-			},
-		},
-		{
-			base_stat: 65,
-			stat: {
-				name: "special-attack",
-				url: "https://pokeapi.co/api/v2/stat/4/",
-			},
-		},
-		{
-			base_stat: 65,
-			stat: {
-				name: "special-defense",
-				url: "https://pokeapi.co/api/v2/stat/5/",
-			},
-		},
-		{
-			base_stat: 45,
-			stat: {
-				name: "speed",
-				url: "https://pokeapi.co/api/v2/stat/6/",
-			},
-		},
-	],
-};
+export const PokemonCard = ({ pokemon }) => {
+	const location = useLocation();
 
-export const PokemonCard = () => {
 	return (
-		<Paper elevation={3}>
+		<Paper
+			elevation={6}
+			sx={{
+				marginTop: "4rem",
+				height: "19rem",
+				display: "flex",
+				flexDirection: "column",
+				justifyContent: "space-between",
+				borderRadius: "1rem"
+			}}
+		>
 			<Box
 				variant="card"
 				sx={{
@@ -73,58 +25,31 @@ export const PokemonCard = () => {
 					flexDirection: "column",
 					alignItems: "center",
 					justifyContents: "center",
+					paddingTop: "1rem",
 				}}
 			>
 				<Avatar
-					src={pokemon.official.front_default}
+					src={
+						pokemon.sprites
+							? pokemon.sprites.other["official-artwork"].front_default
+							: ""
+					}
 					sx={{ width: 150, height: 150, margin: "auto" }}
 				/>
-				<Typography variant="h5" component="h1">
-					{pokemon.name}
+				<Typography variant="h5" component="h1" marginTop=".5rem">
+					{"" || pokemon.name}
 				</Typography>
 			</Box>
-			<Box
-				sx={{
-					height: "40%",
-					width: "100%",
-				}}
-			>
-				<List>
-					{pokemon.stats.map((poke, index) => {
-						return (
-							<ListItem key={index}>
-								<ListItemText
-									primary={poke.stat.name}
-									secondary={
-										<>
-											<LinearProgress
-												variant="determinate"
-												value={poke.base_stat}
-												sx={{
-													marginBottom: ".5rem",
-													marginTop: ".25rem",
-												}}
-											/>
-
-											<Typography
-												variant="span"
-												component="span"
-												sx={{
-													display: "flex",
-													justifyContent: "flex-end",
-													width: "100%",
-												}}
-											>
-												{poke.base_stat}/100
-											</Typography>
-										</>
-									}
-								/>
-							</ListItem>
-						);
-					})}
-				</List>
-			</Box>
+			{location.pathname === "/buscar" ? null : (
+				<Box
+					sx={{
+						height: "40%",
+						width: "100%",
+					}}
+				>
+					<PokemonStats stats={pokemon.stats} />
+				</Box>
+			)}
 			<Box
 				sx={{
 					paddingBottom: "1rem",
@@ -133,7 +58,27 @@ export const PokemonCard = () => {
 					justifyContent: "center",
 				}}
 			>
-				<Button variant="outlined">Remove</Button>
+				{location.pathname === "/buscar" ? (
+					<Box
+						sx={{
+							display: "inherit",
+							width: "80%",
+							justifyContent: "space-around",
+						}}
+					>
+						<Button variant="contained">Agregar</Button>
+						<Button
+							variant="outlined"
+							sx={{
+								padding: "5px 25px",
+							}}
+						>
+							Mas...
+						</Button>
+					</Box>
+				) : (
+					<Button variant="outlined">Remove</Button>
+				)}
 			</Box>
 		</Paper>
 	);

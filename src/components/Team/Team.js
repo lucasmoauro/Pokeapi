@@ -8,16 +8,16 @@ export const Team = () => {
 		}}>
 			<Grid container spacing={2}>
 				<Grid item xs={3}>
-					<PokemonCard />
+					{/* <PokemonCard /> */}
 				</Grid>
 				<Grid item xs={3}>
-					<PokemonCard />
+					{/* <PokemonCard /> */}
 				</Grid>
 				<Grid item xs={3}>
-					<PokemonCard />
+					{/* <PokemonCard /> */}
 				</Grid>
 				<Grid item xs={3}>
-					<PokemonCard />
+					{/* <PokemonCard /> */}
 				</Grid>
 			</Grid>
 		</Container>
