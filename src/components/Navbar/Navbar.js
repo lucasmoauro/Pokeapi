@@ -59,14 +59,15 @@ export const Navbar = () => {
 							}}
 						>
 							{pages.map((page) => (
-								<MenuItem key={page} onClick={handleCloseNavMenu}>
-									<Link
-										to={`/${page}`}
-										style={{ textDecoration: "none", color: "#fff" }}
-									>
+								<Link
+									to={`/${page}`}
+									key={page}
+									style={{ textDecoration: "none", color: "#fff" }}
+								>
+									<MenuItem onClick={handleCloseNavMenu}>
 										<Typography textAlign="center">{page}</Typography>
-									</Link>
-								</MenuItem>
+									</MenuItem>
+								</Link>
 							))}
 						</Menu>
 					</Box>
@@ -78,22 +79,22 @@ export const Navbar = () => {
 						}}
 					>
 						{pages.map((page) => (
-							<Button
+							<Link
+								to={`/${page}`}
+								style={{ textDecoration: "none", color: "#fff" }}
 								key={page}
-								onClick={handleCloseNavMenu}
-								sx={{
-									my: 2,
-									display: "block",
-									fontSize: "1.25rem",
-								}}
 							>
-								<Link
-									to={`/${page}`}
-									style={{ textDecoration: "none", color: "#fff" }}
+								<Button
+									onClick={handleCloseNavMenu}
+									sx={{
+										my: 2,
+										display: "block",
+										fontSize: "1.25rem",
+									}}
 								>
 									{page}
-								</Link>
-							</Button>
+								</Button>
+							</Link>
 						))}
 					</Box>
 				</Toolbar>
