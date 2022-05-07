@@ -1,21 +1,21 @@
 import { Avatar, Paper, Typography, Button } from "@mui/material";
 import { Box } from "@mui/system";
 import { PokemonStats } from "./PokemonStats";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export const PokemonCard = ({ pokemon }) => {
 	const location = useLocation();
 
+	console.log(location);
 	return (
 		<Paper
 			elevation={6}
 			sx={{
-				marginTop: "4rem",
-				height: "19rem",
+				marginTop: "2rem",
 				display: "flex",
 				flexDirection: "column",
 				justifyContent: "space-between",
-				borderRadius: "1rem"
+				borderRadius: "1rem",
 			}}
 		>
 			<Box
@@ -30,20 +30,22 @@ export const PokemonCard = ({ pokemon }) => {
 			>
 				<Avatar
 					src={
-						pokemon.sprites
-							? pokemon.sprites.other["official-artwork"].front_default
-							: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.url.split("/")[6]}.png`
+						pokemon.sprites?.other["official-artwork"].front_default ||
+						`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+							pokemon.url?.split("/")[6]
+						}.png`
 					}
 					sx={{ width: 150, height: 150, margin: "auto" }}
 				/>
-				<Typography variant="h5" component="h1" marginTop=".5rem">
+				<Typography variant="h5" component="h1">
 					{"" || pokemon.name}
 				</Typography>
 			</Box>
-			{location.pathname !== "/equipo" ? null : (
+			{location.pathname === "/buscar" ||
+			location.pathname === "/pokemons" ? null : (
 				<Box
 					sx={{
-						height: "40%",
+						height: "auto",
 						width: "100%",
 					}}
 				>
@@ -56,9 +58,11 @@ export const PokemonCard = ({ pokemon }) => {
 					display: "flex",
 					alignItems: "center",
 					justifyContent: "center",
+					marginTop: "1rem"
 				}}
 			>
-				{location.pathname !== "/equipo" ? (
+				{location.pathname === "/buscar" ||
+				location.pathname === "/pokemons" ? (
 					<Box
 						sx={{
 							display: "inherit",
@@ -67,14 +71,22 @@ export const PokemonCard = ({ pokemon }) => {
 						}}
 					>
 						<Button variant="contained">Agregar</Button>
-						<Button
-							variant="outlined"
-							sx={{
-								padding: "5px 25px",
+						<Link
+							to={`/pokemon/${pokemon.name}`}
+							style={{
+								textDecoration: "none",
 							}}
 						>
-							Mas...
-						</Button>
+							<Button
+								variant="outlined"
+								sx={{
+									padding: "5px 25px",
+								}}
+								color="primary"
+							>
+								Mas...
+							</Button>
+						</Link>
 					</Box>
 				) : (
 					<Button variant="outlined">Remove</Button>
