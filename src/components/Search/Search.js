@@ -2,7 +2,7 @@ import { InputAdornment, Paper, TextField } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getPokemonAsync } from "../../redux/pokemonSlice";
+import { getPokemonAsync } from "../../redux/slices/pokemonSlice";
 
 export const Search = () => {
 	const [input, setInput] = useState("");

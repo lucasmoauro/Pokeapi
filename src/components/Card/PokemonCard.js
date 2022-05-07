@@ -32,7 +32,7 @@ export const PokemonCard = ({ pokemon }) => {
 					src={
 						pokemon.sprites
 							? pokemon.sprites.other["official-artwork"].front_default
-							: ""
+							: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.url.split("/")[6]}.png`
 					}
 					sx={{ width: 150, height: 150, margin: "auto" }}
 				/>
@@ -40,7 +40,7 @@ export const PokemonCard = ({ pokemon }) => {
 					{"" || pokemon.name}
 				</Typography>
 			</Box>
-			{location.pathname === "/buscar" ? null : (
+			{location.pathname !== "/equipo" ? null : (
 				<Box
 					sx={{
 						height: "40%",
@@ -58,7 +58,7 @@ export const PokemonCard = ({ pokemon }) => {
 					justifyContent: "center",
 				}}
 			>
-				{location.pathname === "/buscar" ? (
+				{location.pathname !== "/equipo" ? (
 					<Box
 						sx={{
 							display: "inherit",
