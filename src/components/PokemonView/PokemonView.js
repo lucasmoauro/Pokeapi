@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import { getPokemonAsync } from "../../redux/slices/pokemonSlice";
 import { PokemonCard } from "../Card/PokemonCard";
 
-export const PokemonView = () => {
+const PokemonView = () => {
 	const { pokemon } = useParams();
 	const dispatch = useDispatch();
 
@@ -31,3 +31,5 @@ export const PokemonView = () => {
 		</Container>
 	);
 };
+
+export default PokemonView;

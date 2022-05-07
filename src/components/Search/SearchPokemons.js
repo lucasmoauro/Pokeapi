@@ -3,9 +3,8 @@ import { useSelector } from "react-redux";
 import { PokemonCard } from "../Card/PokemonCard";
 import { Search } from "./Search";
 
-export const SearchPokemons = () => {
+const SearchPokemons = () => {
 	const pokemon = useSelector((state) => state.pokemon);
-
 
 	return (
 		<Container maxWidth="xl">
@@ -32,3 +31,5 @@ export const SearchPokemons = () => {
 		</Container>
 	);
 };
+
+export default SearchPokemons;

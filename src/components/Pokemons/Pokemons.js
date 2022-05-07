@@ -2,7 +2,7 @@ import { Box, Container, Grid, Pagination } from "@mui/material";
 import { useSelector } from "react-redux";
 import { PokemonCard } from "../Card/PokemonCard";
 
-export const Pokemons = () => {
+const Pokemons = () => {
 	const pokemonList = useSelector((state) => state.pokemonList);
 
 	return (
@@ -29,3 +29,5 @@ export const Pokemons = () => {
 		</Container>
 	);
 };
+
+export default Pokemons;

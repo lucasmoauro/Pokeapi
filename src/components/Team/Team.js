@@ -1,7 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import { PokemonCard } from "../Card/PokemonCard";
 
-export const Team = () => {
+const Team = () => {
 	return (
 		<Container maxWidth="xl" sx={{
 			marginTop: "1rem"
@@ -23,3 +23,5 @@ export const Team = () => {
 		</Container>
 	);
 };
+
+export default Team;
