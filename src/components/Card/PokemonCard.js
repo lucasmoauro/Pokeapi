@@ -3,12 +3,9 @@ import { useLocation } from "react-router-dom";
 import { HeaderCard } from "./components/HeaderCard";
 import { BodyCard } from "./components/BodyCard";
 import { FooterCard } from "./components/FooterCard";
-import { useSelector } from "react-redux";
 
 export const PokemonCard = ({ pokemon }) => {
 	const location = useLocation();
-	const pokemon2 = useSelector(state => state.pokemon)
-
 
 	return (
 		<Paper
@@ -27,7 +24,7 @@ export const PokemonCard = ({ pokemon }) => {
 			location.pathname === "/pokemons" ? null : (
 				<BodyCard stats={pokemon.stats} />
 			)}
-			<FooterCard name={pokemon.name}/>
+			<FooterCard name={pokemon.name} pokemon={pokemon} />
 		</Paper>
 	);
 };

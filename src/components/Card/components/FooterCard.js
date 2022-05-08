@@ -1,8 +1,23 @@
 import { Box, Button } from "@mui/material";
+import { useDispatch } from "react-redux";
 import { Link, useLocation } from "react-router-dom";
+import {
+	addPokemon,
+	deletePokemon,
+} from "../../../redux/slices/pokemonTeamSlice";
 
-export const FooterCard = (pokemon) => {
+export const FooterCard = ({ name, pokemon }) => {
 	const location = useLocation();
+
+	const dispatch = useDispatch();
+
+	const handleRemove = () => {
+		dispatch(deletePokemon(name));
+	};
+
+	const handleAdd = () => {
+		dispatch(addPokemon(pokemon));
+	};
 
 	return (
 		<Box
@@ -22,9 +37,11 @@ export const FooterCard = (pokemon) => {
 						justifyContent: "space-around",
 					}}
 				>
-					<Button variant="contained">Agregar</Button>
+					<Button variant="contained" onClick={handleAdd}>
+						Agregar
+					</Button>
 					<Link
-						to={`/pokemon/${pokemon.name}`}
+						to={`/pokemon/${name}`}
 						style={{
 							textDecoration: "none",
 						}}
@@ -41,7 +58,9 @@ export const FooterCard = (pokemon) => {
 					</Link>
 				</Box>
 			) : (
-				<Button variant="outlined">Remove</Button>
+				<Button variant="outlined" onClick={handleRemove}>
+					Remove
+				</Button>
 			)}
 		</Box>
 	);
