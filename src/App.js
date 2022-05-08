@@ -4,7 +4,7 @@ import CssBaseline from "@mui/material/CssBaseline";
 import { Navbar } from "./components/Navbar/Navbar";
 import { AppRouter } from "./router/AppRouter";
 import { getPokemonListAsync } from "./redux/slices/pokemonListSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
 const darkTheme = createTheme({
@@ -37,10 +37,12 @@ const lightTheme = createTheme({
 });
 
 function App() {
+	const page = useSelector((state) => state.pokemonPagination);
+
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(getPokemonListAsync());
-	}, []); //eslint-disable-line
+		dispatch(getPokemonListAsync(page));
+	}, [page]); //eslint-disable-line
 
 	return (
 		<BrowserRouter>
