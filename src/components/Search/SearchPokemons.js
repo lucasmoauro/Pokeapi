@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Box, Container, Grid } from "@mui/material";
 import { useSelector } from "react-redux";
 import { PokemonCard } from "../Card/PokemonCard";
 import { Search } from "./Search";
@@ -16,14 +16,13 @@ const SearchPokemons = () => {
 				<Search />
 			</Box>
 			{Object.keys(pokemon).length === 0 ? null : (
-				<Box
-					sx={{
-						width: "25%",
-						margin: "auto",
-					}}
-				>
-					<PokemonCard pokemon={pokemon} />
-				</Box>
+				<Grid container>
+					<Grid item xs={12} sm={6} md={3} sx={{
+						margin: "auto"
+					}}>
+							<PokemonCard pokemon={pokemon} />
+					</Grid>
+				</Grid>
 			)}
 		</Container>
 	);
