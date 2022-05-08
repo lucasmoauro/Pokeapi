@@ -15,7 +15,9 @@ const Team = () => {
 			<Grid container spacing={2}>
 				{pokemonTeam.map((pokemon, index) => {
 					return (
-						<Grid item xs={3} key={index}>
+						<Grid item xs={12} sm={6} md={4} lg={3} sx={{
+							marginBottom: "1rem"
+						}} key={index}>
 							<PokemonCard pokemon={pokemon} />
 						</Grid>
 					);
