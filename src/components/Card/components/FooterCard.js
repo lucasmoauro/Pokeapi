@@ -1,13 +1,20 @@
 import { Box, Button } from "@mui/material";
-import { useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useParams } from "react-router-dom";
 import {
 	addPokemon,
 	deletePokemon,
 } from "../../../redux/slices/pokemonTeamSlice";
 
 export const FooterCard = ({ name, pokemon }) => {
-	const location = useLocation();
+	const isInPokemonTeam = useSelector((state) => state.pokemonTeam);
+
+	const params = useParams();
+
+	useEffect(() => {
+		console.log(params.pokemon);
+	}, [params]);
 
 	const dispatch = useDispatch();
 
@@ -29,17 +36,24 @@ export const FooterCard = ({ name, pokemon }) => {
 				marginTop: "1rem",
 			}}
 		>
-			{location.pathname === "/buscar" || location.pathname === "/pokemons" ? (
-				<Box
-					sx={{
-						display: "inherit",
-						width: "80%",
-						justifyContent: "space-around",
-					}}
-				>
+			<Box
+				sx={{
+					display: "inherit",
+					width: "80%",
+					justifyContent: "space-around",
+				}}
+			>
+				{isInPokemonTeam.some((pokemon) => pokemon.name === name) ? (
+					<Button variant="outlined" onClick={handleRemove}>
+						Eliminar
+					</Button>
+				) : (
 					<Button variant="contained" onClick={handleAdd}>
 						Agregar
 					</Button>
+				)}
+
+				{params.pokemon === undefined ? (
 					<Link
 						to={`/pokemon/${name}`}
 						style={{
@@ -56,12 +70,8 @@ export const FooterCard = ({ name, pokemon }) => {
 							Mas...
 						</Button>
 					</Link>
-				</Box>
-			) : (
-				<Button variant="outlined" onClick={handleRemove}>
-					Remove
-				</Button>
-			)}
+				) : null}
+			</Box>
 		</Box>
 	);
 };
