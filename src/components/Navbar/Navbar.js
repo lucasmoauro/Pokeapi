@@ -26,9 +26,9 @@ export const Navbar = () => {
 	return (
 		<AppBar
 			position="static"
-			sx={{ background: "transparent", boxShadow: "none" }}
+			elevation={1}
 		>
-			<Container maxWidth="xs">
+			<Container maxWidth="xl">
 				<Toolbar disableGutters>
 					<Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
 						<IconButton
@@ -73,15 +73,16 @@ export const Navbar = () => {
 					</Box>
 					<Box
 						sx={{
-							flexGrow: 1,
 							display: { xs: "none", md: "flex" },
-							justifyContent: { md: "space-between" },
+							justifyContent: { md: "center" },
+							alignItems: { md: "center" },
+							width: { md: "100%" },
 						}}
 					>
 						{pages.map((page) => (
 							<Link
 								to={`/${page}`}
-								style={{ textDecoration: "none", color: "#fff" }}
+								style={{ textDecoration: "none", color: "#fff", padding: "0 1rem" }}
 								key={page}
 							>
 								<Button
