@@ -15,11 +15,11 @@ const Pokemons = () => {
 	}, [page]); //eslint-disable-line
 
 	return (
-		<Container maxWidth="xl" sx={{}}>
+		<Container maxWidth="xl">
 			<Grid container spacing={2}>
 				{pokemonList.map((pokemon, index) => {
 					return (
-						<Grid item xs={3} key={index}>
+						<Grid item xs={12} sm={6} md={4} lg={3} key={index}>
 							<PokemonCard pokemon={pokemon} />
 						</Grid>
 					);
