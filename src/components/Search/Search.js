@@ -1,4 +1,4 @@
-import { InputAdornment, Paper, TextField } from "@mui/material";
+import { Grid, InputAdornment, Paper, TextField } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -17,39 +17,51 @@ export const Search = () => {
 	};
 
 	return (
-		<form
-			onSubmit={handleSubmit}
-			style={{
-				display: "flex",
-				justifyContent: "center",
-				alignItems: "center",
-				width: "100%",
-			}}
-		>
-			<Paper
+		<Grid container>
+			<Grid
+				item
+				xs={12}
+				sm={6}
+				md={4}
 				sx={{
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
-					width: "40%",
+					margin: "auto",
 				}}
-				elevation={5}
 			>
-				<TextField
-					value={input}
-					onChange={(e) => setInput(e.target.value)}
-					label="Busque su pokemon por nombre o numero"
-					variant="outlined"
-					fullWidth
-					InputProps={{
-						endAdornment: (
-							<InputAdornment position="end">
-								<SearchIcon />
-							</InputAdornment>
-						),
+				<form
+					onSubmit={handleSubmit}
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						width: "100%",
 					}}
-				/>
-			</Paper>
-		</form>
+				>
+					<Paper
+						sx={{
+							display: "flex",
+							justifyContent: "center",
+							alignItems: "center",
+							width: "100%",
+						}}
+						elevation={5}
+					>
+						<TextField
+							value={input}
+							onChange={(e) => setInput(e.target.value)}
+							label="Busque su pokemon por nombre o numero"
+							variant="outlined"
+							fullWidth
+							InputProps={{
+								endAdornment: (
+									<InputAdornment position="end">
+										<SearchIcon />
+									</InputAdornment>
+								),
+							}}
+						/>
+					</Paper>
+				</form>
+			</Grid>
+		</Grid>
 	);
 };

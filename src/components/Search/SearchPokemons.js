@@ -10,9 +10,6 @@ const SearchPokemons = () => {
 		<Container maxWidth="xl">
 			<Box
 				sx={{
-					display: "flex",
-					justifyContent: "center",
-					alignItems: "center",
 					marginTop: "1rem",
 				}}
 			>
