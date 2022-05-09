@@ -1,4 +1,11 @@
-import { Grid, InputAdornment, Paper, TextField } from "@mui/material";
+import {
+	Button,
+	Divider,
+	Grid,
+	InputAdornment,
+	Paper,
+	TextField,
+} from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
@@ -54,7 +61,10 @@ export const Search = () => {
 							InputProps={{
 								endAdornment: (
 									<InputAdornment position="end">
-										<SearchIcon />
+										<Button variant="text" type="submit">
+											<SearchIcon />
+											Buscar
+										</Button>
 									</InputAdornment>
 								),
 							}}
