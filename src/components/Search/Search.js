@@ -1,11 +1,4 @@
-import {
-	Button,
-	Divider,
-	Grid,
-	InputAdornment,
-	Paper,
-	TextField,
-} from "@mui/material";
+import { Button, Grid, InputAdornment, Paper, TextField } from "@mui/material";
 import { Search as SearchIcon } from "@mui/icons-material";
 import { useState } from "react";
 import { useDispatch } from "react-redux";

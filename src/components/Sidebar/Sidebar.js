@@ -17,6 +17,7 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { deletePokemon } from "../../redux/slices/pokemonTeamSlice";
+import { toastAlert } from "../ToastAlert/ToastAlert";
 
 export const Sidebar = () => {
 	const pokemonTeam = useSelector((state) => state.pokemonTeam);
@@ -39,6 +40,7 @@ export const Sidebar = () => {
 
 	const handleRemove = (pokemon) => {
 		dispatch(deletePokemon(pokemon));
+		toastAlert("Pokemon eliminado!", "error");
 	};
 
 	return (

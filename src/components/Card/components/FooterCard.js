@@ -1,11 +1,11 @@
 import { Box, Button } from "@mui/material";
-import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import {
 	addPokemon,
 	deletePokemon,
 } from "../../../redux/slices/pokemonTeamSlice";
+import { toastAlert } from "../../ToastAlert/ToastAlert";
 
 export const FooterCard = ({ name, pokemon }) => {
 	const isInPokemonTeam = useSelector((state) => state.pokemonTeam);
@@ -16,10 +16,12 @@ export const FooterCard = ({ name, pokemon }) => {
 
 	const handleRemove = () => {
 		dispatch(deletePokemon(name));
+		toastAlert("Pokemon Eliminado!", "error");
 	};
 
 	const handleAdd = () => {
 		dispatch(addPokemon(pokemon));
+		toastAlert("Pokemon Agregado!", "success");
 	};
 
 	return (
