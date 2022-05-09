@@ -6,6 +6,7 @@ import { AppRouter } from "./router/AppRouter";
 import { getPokemonListAsync } from "./redux/slices/pokemonListSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
+import { Sidebar } from "./components/Sidebar/Sidebar";
 
 const darkTheme = createTheme({
 	palette: {
@@ -50,6 +51,7 @@ function App() {
 				<CssBaseline />
 				<Navbar />
 				<AppRouter />
+				<Sidebar />
 			</ThemeProvider>
 		</BrowserRouter>
 	);

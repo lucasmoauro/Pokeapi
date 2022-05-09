@@ -12,10 +12,6 @@ export const FooterCard = ({ name, pokemon }) => {
 
 	const params = useParams();
 
-	useEffect(() => {
-		console.log(params.pokemon);
-	}, [params]);
-
 	const dispatch = useDispatch();
 
 	const handleRemove = () => {
