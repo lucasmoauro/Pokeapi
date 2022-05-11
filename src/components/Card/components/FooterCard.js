@@ -20,8 +20,13 @@ export const FooterCard = ({ name, pokemon }) => {
 	};
 
 	const handleAdd = () => {
-		dispatch(addPokemon(pokemon));
-		toastAlert("Pokemon Agregado!", "success");
+		if (isInPokemonTeam.length < 6) {
+			dispatch(addPokemon(pokemon));
+			toastAlert("Pokemon Agregado!", "success");
+		} else {
+			toastAlert("El equipo esta completo!", "error");
+			return;
+		}
 	};
 
 	return (
