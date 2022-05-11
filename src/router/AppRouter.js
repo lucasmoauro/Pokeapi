@@ -11,7 +11,7 @@ export const AppRouter = () => {
 				<Route path="/pokemons" element={<Pokemons />} />
 				<Route path="/buscar" element={<SearchPokemons />} />
 				<Route path="/pokemon/:pokemon" element={<PokemonView />} />
-				<Route path="/" element={<Navigate to="/equipo" />} />
+				<Route path="/" element={<Navigate to="/pokemons" />} />
 			</Routes>
 		</Suspense>
 	);
