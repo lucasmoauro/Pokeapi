@@ -8,10 +8,21 @@ import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import { Sidebar } from "./components/Sidebar/Sidebar";
 import { Toaster } from "react-hot-toast";
+import { savedPokemon } from "./redux/slices/pokemonTeamSlice";
 
 const darkTheme = createTheme({
 	palette: {
+		primary: {
+			main: "#84aff3",
+		},
+		secondary: {
+			main: "#e290f4",
+		},
 		mode: "dark",
+		background: {
+			default: "#201f24",
+			paper: "#1c2124",
+		},
 	},
 	components: {
 		MuiButton: {
@@ -23,28 +34,23 @@ const darkTheme = createTheme({
 		},
 	},
 });
-const lightTheme = createTheme({
-	palette: {
-		mode: "light",
-	},
-	components: {
-		MuiButton: {
-			styleOverrides: {
-				text: {
-					color: "#000",
-				},
-			},
-		},
-	},
-});
 
 function App() {
 	const page = useSelector((state) => state.pokemonPagination);
 
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		dispatch(getPokemonListAsync(page));
 	}, [page]); //eslint-disable-line
+
+	useEffect(() => {
+		if (!localStorage.getItem("pokemonTeam")) {
+			return;
+		} else {
+			dispatch(savedPokemon(JSON.parse(localStorage.getItem("pokemonTeam"))));
+		}
+	}, []); //eslint-disable-line
 
 	return (
 		<BrowserRouter>

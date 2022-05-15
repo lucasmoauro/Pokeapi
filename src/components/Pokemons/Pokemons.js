@@ -10,6 +10,7 @@ const Pokemons = () => {
 
 	const dispatch = useDispatch();
 
+
 	useEffect(() => {
 		dispatch(pagination(page));
 	}, [page]); //eslint-disable-line

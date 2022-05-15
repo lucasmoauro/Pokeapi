@@ -47,11 +47,11 @@ export const FooterCard = ({ name, pokemon }) => {
 				}}
 			>
 				{isInPokemonTeam.some((pokemon) => pokemon.name === name) ? (
-					<Button variant="outlined" onClick={handleRemove}>
+					<Button variant="outlined" onClick={handleRemove()}>
 						Eliminar
 					</Button>
 				) : (
-					<Button variant="contained" onClick={handleAdd}>
+					<Button variant="contained" onClick={handleAdd()}>
 						Agregar
 					</Button>
 				)}
@@ -68,7 +68,7 @@ export const FooterCard = ({ name, pokemon }) => {
 							sx={{
 								padding: "5px 25px",
 							}}
-							color="primary"
+							color="secondary"
 						>
 							Mas...
 						</Button>
