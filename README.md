@@ -1,46 +1,26 @@
-# Getting Started with Create React App and Redux
+# PokeApi <img src="./public/pokeball.ico" width=25 />
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+## Que es PokeApi?
 
-## Available Scripts
+    PokeApi es una app simple que te permite buscar pokemons por nombre o por id.
 
-In the project directory, you can run:
+    Tambien se pueden ver las stats del pokemon seleccionado y se puede armar un equipo de hasta 6.
 
-### `npm start`
+    Desarrolle esta app con el objetivo de poner en practica MaterialUI y Redux-Toolkit, 2 tecnologias que no habia utilizado hasta el momento, esto me permitio enfrentarme a ciertos retos los cuales me ayudaron a familiarizarme con la documentacion y sentirme comodo trabajando con estas tecnologias.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Futura actualizacion
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    Planeo aprender Java en un futuro cercano con lo cual volvere a actualizar esta app para transformarla en fullstack y permitir registro y logueo de usuarios, con la finalidad de guardar los datos en una base de datos relacional. Ya que de momento solo cuento con conocimientos en Node/Express y MongoDB.
 
-### `npm test`
+## Librerias utilizadas
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+    1. React
+    2. React-router-dom
+    3. MaterialUI
+    4. Axios
+    5. Redux-Toolkit
+    6. React-hot-toast
 
-### `npm run build`
+## website: https://pokesapi.netlify.app/
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Api: https://pokeapi.co/
