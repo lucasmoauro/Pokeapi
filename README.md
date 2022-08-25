@@ -4,7 +4,7 @@
 <p>
 PokeApi es una app simple que te permite buscar pokemons por nombre o por id.
 
-Tambien se pueden ver las stats del pokemon seleccionado y se puede armar un equipo de hasta 6.
+Tambien se pueden ver las stats del pokemon seleccionado y se puede armar un equipo de hasta 6 pokemons.
 
 Desarrolle esta app con el objetivo de poner en practica MaterialUI y Redux-Toolkit, 2 tecnologias
 que no habia utilizado hasta el momento, esto me permitio enfrentarme a ciertos retos los
